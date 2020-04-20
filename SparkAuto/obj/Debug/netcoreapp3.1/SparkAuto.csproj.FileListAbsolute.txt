@@ -422,3 +422,4 @@ C:\Users\lrnma\source\repos\Training\SparkAuto\SparkAuto\bin\Debug\netcoreapp3.1
 C:\Users\lrnma\source\repos\Training\SparkAuto\SparkAuto\obj\Debug\netcoreapp3.1\SparkAuto.csproj.CoreCompileInputs.cache
 C:\Users\lrnma\source\repos\Training\SparkAuto\SparkAuto\obj\Debug\netcoreapp3.1\SparkAuto.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\lrnma\source\repos\Training\SparkAuto\SparkAuto\obj\Debug\netcoreapp3.1\SparkAuto.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\lrnma\source\repos\Training\SparkAuto\SparkAuto\obj\Debug\netcoreapp3.1\Razor\Pages\Shared\_CookieConsentPartial.cshtml.g.cs
