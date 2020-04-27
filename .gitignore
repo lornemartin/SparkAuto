@@ -342,3 +342,5 @@ healthchecksdb
 #local binary files
 /bin/
 /obj/
+*.dll
+*.pdb
