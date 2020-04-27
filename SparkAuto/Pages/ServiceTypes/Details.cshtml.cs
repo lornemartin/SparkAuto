@@ -12,11 +12,11 @@ namespace SparkAuto.Pages.ServiceTypes
 {
     public class DetailsModel : PageModel
     {
-        private readonly SparkAuto.Data.ApplicationDbContext _context;
+        private readonly SparkAuto.Data.ApplicationDbContext _db;
 
-        public DetailsModel(SparkAuto.Data.ApplicationDbContext context)
+        public DetailsModel(SparkAuto.Data.ApplicationDbContext db)
         {
-            _context = context;
+            _db = db;
         }
 
         public ServiceType ServiceType { get; set; }
@@ -28,7 +28,7 @@ namespace SparkAuto.Pages.ServiceTypes
                 return NotFound();
             }
 
-            ServiceType = await _context.ServiceType.FirstOrDefaultAsync(m => m.Id == id);
+            ServiceType = await _db.ServiceType.FirstOrDefaultAsync(m => m.Id == id);
 
             if (ServiceType == null)
             {
