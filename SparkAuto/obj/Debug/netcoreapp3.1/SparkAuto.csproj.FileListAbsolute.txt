@@ -485,3 +485,4 @@ C:\Users\lrnma\source\repos\Training\SparkAuto\SparkAuto\obj\Debug\netcoreapp3.1
 C:\Users\lrnma\source\repos\Training\SparkAuto\SparkAuto\obj\Debug\netcoreapp3.1\SparkAuto.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\lrnma\source\repos\Training\SparkAuto\SparkAuto\obj\Debug\netcoreapp3.1\Razor\Pages\ServiceTypes\Edit.cshtml.g.cs
 C:\Users\lrnma\source\repos\Training\SparkAuto\SparkAuto\obj\Debug\netcoreapp3.1\Razor\Pages\Shared\_EditAndBackToListButton.cshtml.g.cs
+C:\Users\lrnma\source\repos\Training\SparkAuto\SparkAuto\obj\Debug\netcoreapp3.1\Razor\Pages\ServiceTypes\Details.cshtml.g.cs
