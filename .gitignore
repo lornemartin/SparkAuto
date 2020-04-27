@@ -338,9 +338,3 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
-
-#local binary files
-/bin/
-/obj/
-*.dll
-*.pdb
