@@ -94,7 +94,7 @@ namespace SparkAuto.Areas.Identity.Pages.Account
                 var user = new ApplicationUser { 
                     UserName = Input.Email, 
                     Email = Input.Email,
-                    Name = Input.Email,
+                    Name = Input.Name,
                     Address = Input.Address,
                     City = Input.City,
                     PostalCode = Input.PostalCode,
