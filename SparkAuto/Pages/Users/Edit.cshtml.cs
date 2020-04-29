@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using SparkAuto.Models;
+using SparkAuto.Utility;
 
 namespace SparkAuto.Pages.Users
 {
+    [Authorize(Roles = SD.AdminEndUser)]
     public class EditModel : PageModel
     {
         private readonly SparkAuto.Data.ApplicationDbContext _db;
