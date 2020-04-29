@@ -19,36 +19,42 @@ namespace SparkAuto.Pages.Users
         }
 
         [BindProperty]
-        public ApplicationUser AppUser { get; set; }
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public ApplicationUser ApplicationUser { get; set; }
+        public async Task<IActionResult> OnGetAsync(string guid)
         {
-            if(id == null)
+            if(guid == null)
             {
                 return NotFound();
             }
 
-            AppUser = await _db.ApplicationUser.FirstOrDefaultAsync(u => u.Id == id.ToString());
-            if(AppUser==null)
+            ApplicationUser = await _db.ApplicationUser.FirstOrDefaultAsync(u => u.Id == guid);
+            if(ApplicationUser==null)
             {
                 return NotFound();
             }
             return Page();
         }
 
-        //public async Task<IActionResult> OnGetAsync(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
+        public async Task<IActionResult> OnPostAsync()
+        {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
 
-        //    ServiceType = await _db.ServiceType.FirstOrDefaultAsync(m => m.Id == id);
+            _db.Attach(ApplicationUser).State = EntityState.Modified;
 
-        //    if (ServiceType == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    return Page();
-        //}
+            var userFromDb = await _db.ApplicationUser.FirstOrDefaultAsync(s => s.Id == ApplicationUser.Id);
+            userFromDb.Name = ApplicationUser.Name;
+            //userFromDb.Email = ApplicationUser.Email;
+            userFromDb.PhoneNumber = ApplicationUser.PhoneNumber;
+            userFromDb.Address = ApplicationUser.Address;
+            userFromDb.City = ApplicationUser.City;
+            userFromDb.PostalCode = ApplicationUser.PostalCode;
+
+            await _db.SaveChangesAsync();
+
+            return RedirectToPage("./Index");
+        }
     }
 }
