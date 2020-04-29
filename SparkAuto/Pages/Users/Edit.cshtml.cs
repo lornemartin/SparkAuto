@@ -42,11 +42,8 @@ namespace SparkAuto.Pages.Users
                 return Page();
             }
 
-            _db.Attach(ApplicationUser).State = EntityState.Modified;
-
             var userFromDb = await _db.ApplicationUser.FirstOrDefaultAsync(s => s.Id == ApplicationUser.Id);
             userFromDb.Name = ApplicationUser.Name;
-            //userFromDb.Email = ApplicationUser.Email;
             userFromDb.PhoneNumber = ApplicationUser.PhoneNumber;
             userFromDb.Address = ApplicationUser.Address;
             userFromDb.City = ApplicationUser.City;
