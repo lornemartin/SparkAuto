@@ -45,7 +45,7 @@ namespace SparkAuto
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddRazorPages().AddRazorRuntimeCompilation();
 
-            services.AddSingleton<IEmailSender, IEmailSender>();
+            services.AddSingleton<IEmailSender, EmailSender>();
             services.Configure<EmailOptions>(Configuration);
 
 
