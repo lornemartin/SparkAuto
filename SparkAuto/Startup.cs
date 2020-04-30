@@ -12,6 +12,8 @@ using SparkAuto.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using SparkAuto.Email;
 
 namespace SparkAuto
 {
@@ -41,7 +43,11 @@ namespace SparkAuto
                 .AddDefaultTokenProviders()
                 .AddDefaultUI()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            services.AddRazorPages().AddRazorRuntimeCompilation(); ;
+            services.AddRazorPages().AddRazorRuntimeCompilation();
+
+            services.AddSingleton<IEmailSender, IEmailSender>();
+            services.Configure<EmailOptions>(Configuration);
+
 
         }
 
