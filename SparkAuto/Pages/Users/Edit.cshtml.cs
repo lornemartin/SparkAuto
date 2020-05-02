@@ -23,6 +23,7 @@ namespace SparkAuto.Pages.Users
 
         [BindProperty]
         public ApplicationUser ApplicationUser { get; set; }
+
         public async Task<IActionResult> OnGetAsync(string guid)
         {
             if(guid == null)
