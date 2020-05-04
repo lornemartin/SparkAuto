@@ -20,7 +20,7 @@ namespace SparkAuto.Models
         [DisplayFormat(DataFormatString ="{0:MMM dd yyyy}")]
         public DateTime DateAdded { get; set; }
 
-        public int carId { get; set; }
+        public int CarId { get; set; }
 
         [ForeignKey("CarId")]
         public virtual Car Car { get; set; }

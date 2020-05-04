@@ -15,7 +15,7 @@ namespace SparkAuto.Models
         [ForeignKey("CarId")]
         public virtual Car Car { get; set; }
 
-        [ForeignKey("ServiceType")]
+        [ForeignKey("ServiceTypeId")]
         public virtual ServiceType ServiceType { get; set; }
 
     }
