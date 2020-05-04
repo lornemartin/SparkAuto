@@ -20,22 +20,51 @@
             <div class="col-1 text-center pt-3 text-white-50">
                 <i class="fas fa-user fa-2x"></i>
             </div>
-            <div class="col-5"></div>
-            <div class="col-5"></div>
+            <div class="col-5">
+                <label class="text-info">@Model.CarServiceVM.Car.ApplicationUser.Name</label><br />
+                <label class="text-info">@Model.CarServiceVM.Car.ApplicationUser.Email / @Model.CarServiceVM.Car.ApplicationUser.PhoneNumber </label><br />
+            </div>
+            <div class="col-5 text-right">
+                <label class="text-info">@Model.CarServiceVM.Car.Make @Model.CarServiceVM.Car.Model </label><br />
+                <label class="text-info">@Model.CarServiceVM.Car.Year</label>
+            </div>
             <div class="col-1 text-center pt-3 text-white-50">
                 <i class="fas fa-car fa-2x"></i>
             </div>
-            @*<div class="col-6 text-right">
-                @if (User.IsInRole(SD.AdminEndUser))
-                {
-                    <a asp-page="/Users/Index" class="btn btn-outline-info btn-sm">Back to Users</a>
-                }
-            </div>*@
         </div>
         <div class="card-body">
-            <div class="row" style="padding-bottom:40px; padding-top:20px;">
+            <form method="post" style="width:100%">
+                <div class="container">
+                    <input hidden asp-for="CarServiceVM.Car.Make" />
+                    <input hidden asp-for="CarServiceVM.Car.Model" />
+                    <input hidden asp-for="CarServiceVM.Car.VIN" />
+                    <input hidden asp-for="CarServiceVM.Car.UserId" />
+                    <input hidden asp-for="CarServiceVM.Car.Id" />
 
-            </div>
+                    <div class="border rounded" p-2">
+                        <div class="row">
+                            <div class="col-3">
+                                <h4 class="text-info pl-3 pt-2 pb-1">Add Service</h4>
+                            </div>
+                            <div class="col-9 pb-1 pt-2">
+                                <div class="row">
+                                    <div class="col-8">
+                                        <select asp-for="CarServiceVM.ServiceDetails.ServiceTypeId"
+                                                asp-items="@(new SelectList(Model.CarServiceVM.ServiceTypesList,"Id","Name"))"
+                                                class="form-control">
+                                        </select>
+                                    </div>
+                                    <div class="col-4">
+                                        <button type="submit" asp-page-handler="AddToCart" class="form-control btn btn-primary">
+                                            Add
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>
