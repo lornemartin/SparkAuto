@@ -4,5 +4,72 @@
     ViewData["Title"] = "History";
 }
 
-<h1>History</h1>
+<h2 class="text-info py-2">Car Record For Customer</h2>
+<div class="container pt-4 pb-2 row">
+    <div class="col-6">
+        <h2 class="text-info py-2">Service History</h2>
+    </div>
+    <div class="col-3 offset-3 text-right py-2">
+        <a asp-page="../Cars/Index" asp-route-userId="@Model.UserId" class="btn btn-outline-success form-control">Back To List</a>
+    </div>
+</div>
+
+@if (Model.ServiceHeader.Count ==0)
+{
+    <div class="backgroundWhite">
+        <p>No Service Record Found...</p>
+    </div>
+}
+else
+{
+    <div class="container backgroundWhite">
+        <div class="card">
+
+
+            <table class="table table-striped border">
+                <tr class="table-secondary">
+                    <th>
+                        @Html.DisplayNameFor(m => Model.ServiceHeader[0].Miles)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(m => Model.ServiceHeader[0].TotalPrice)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(m => Model.ServiceHeader[0].Details)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(m => Model.ServiceHeader[0].DateAdded)
+                    </th>
+                    <th>
+
+                    </th>
+                </tr>
+                @foreach (var item in Model.ServiceHeader)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(m => item.Miles)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.TotalPrice)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.Details)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.DateAdded)
+
+                        </td>
+
+                        <td>
+                            <a asp-page="Details" class="btn btn-info form-control" asp-route-service-id="@item.Id">
+                                <i class="fas fa-list"></i> Details
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+}
 
