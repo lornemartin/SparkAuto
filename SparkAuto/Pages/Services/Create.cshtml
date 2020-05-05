@@ -100,9 +100,9 @@
                                                     @Html.DisplayFor(m => item.ServiceType.Price)
                                                 </td>
                                                 <td>
-                                                    <button type="submit" asp-page-handler="RemoveFromCart" asp-route-serviceId="@item.ServiceTypeId" class="btn btn-danger form-control">
+                                                    <button type="submit" asp-page-handler="RemoveFromCart" asp-route-serviceTypeId="@item.ServiceTypeId" class="btn btn-danger form-control">
                                                         <i class="fas fa-trash-alt"></i>
-                                                    </button>"
+                                                    </button>
                                                 </td>
                                             </tr>
                                         }

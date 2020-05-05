@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -93,6 +94,31 @@ namespace SparkAuto.Pages.Services
             }
 
             return Page();
+        }
+
+        public async Task<IActionResult> OnPostAddToCart()
+        {
+            ServiceShoppingCart objServiceCart = new ServiceShoppingCart()
+            {
+                CarId = CarServiceVM.Car.Id,
+                ServiceTypeId = CarServiceVM.ServiceDetails.ServiceTypeId
+            };
+
+            _db.ServiceShoppingCart.Add(objServiceCart);
+            await _db.SaveChangesAsync();
+
+            return RedirectToPage("Create", new { carId = CarServiceVM.Car.Id });
+        }
+
+        public async Task<IActionResult> OnPostRemoveFromCart(int serviceTypeId)
+        {
+            ServiceShoppingCart objServiceCart = _db.ServiceShoppingCart
+                .FirstOrDefault(u => u.CarId == CarServiceVM.Car.Id && u.ServiceTypeId == serviceTypeId);
+
+            _db.ServiceShoppingCart.Remove(objServiceCart);
+            await _db.SaveChangesAsync();
+
+            return RedirectToPage("Create", new { carId = CarServiceVM.Car.Id });
         }
     }
 }
