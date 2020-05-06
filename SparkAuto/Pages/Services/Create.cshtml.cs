@@ -64,7 +64,7 @@ namespace SparkAuto.Pages.Services
             if(ModelState.IsValid)
             {
                 CarServiceVM.ServiceHeader.DateAdded = DateTime.Now;
-                CarServiceVM.ServiceShoppingCart = _db.ServiceShoppingCart.Include(c => c.ServiceType).ToList();
+                CarServiceVM.ServiceShoppingCart = _db.ServiceShoppingCart.Include(c => c.ServiceType).Where(c=>c.CarId==CarServiceVM.Car.Id).ToList();
                 foreach(var item in CarServiceVM.ServiceShoppingCart)
                 {
                     CarServiceVM.ServiceHeader.TotalPrice += item.ServiceType.Price;
@@ -78,7 +78,7 @@ namespace SparkAuto.Pages.Services
                 {
                     ServiceDetails serviceDetails = new ServiceDetails
                     {
-                        ServiceHeaderId = CarServiceVM.ServiceDetails.ServiceTypeId,
+                        ServiceHeaderId = CarServiceVM.ServiceHeader.Id,
                         ServiceName = detail.ServiceType.Name,
                         ServicePrice = detail.ServiceType.Price,
                         ServiceTypeId = detail.ServiceType.Id
