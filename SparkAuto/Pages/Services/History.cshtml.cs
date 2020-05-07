@@ -11,6 +11,7 @@ using SparkAuto.Models;
 
 namespace SparkAuto.Pages.Services
 {
+    [Authorize]
     public class HistoryModel : PageModel
     {
         private readonly ApplicationDbContext _db;

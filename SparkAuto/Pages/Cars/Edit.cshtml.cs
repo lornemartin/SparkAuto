@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 //using AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -11,6 +12,7 @@ using SparkAuto.Models;
 
 namespace SparkAuto.Pages.Cars
 {
+    [Authorize]
     public class EditModel : PageModel
     {
         private readonly ApplicationDbContext _db;
