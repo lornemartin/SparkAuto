@@ -36,6 +36,8 @@ namespace SparkAuto
                 options.MinimumSameSitePolicy = Microsoft.AspNetCore.Http.SameSiteMode.None;
             });
 
+            services.AddScoped<IDbInitializer, DbInitializer>();
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
@@ -61,7 +63,7 @@ namespace SparkAuto
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IDbInitializer dbInitializer)
         {
             if (env.IsDevelopment())
             {
@@ -75,6 +77,7 @@ namespace SparkAuto
                 app.UseHsts();
             }
 
+            dbInitializer.Initialize();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
